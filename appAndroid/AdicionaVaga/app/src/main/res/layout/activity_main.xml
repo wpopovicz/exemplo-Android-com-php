@@ -21,11 +21,11 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/listar_candidato"
+            android:id="@+id/listar_vaga"
             style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/listar_candidato"
+            android:text="@string/listar_vaga"
             android:layout_marginTop="15dp"
             android:textStyle="bold"/>
 

@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">Teste TecnoSpeed</string>
     <string name="cadastrar_vaga">Cadastrar Vaga</string>
-    <string name="listar_candidato">Listar Candidato</string>
+    <string name="salvar">Salvar</string>
+    <string name="listar_vaga">Listar Vagas</string>
+    <string name="hint_titulo">Título</string>
+    <string name="hint_setor">Setor</string>
+    <string name="hint_cargo">Cargo</string>
+    <string name="hint_atividade">Atividades</string>
+    <string name="hint_requisito">Requisitos</string>
+    <string name="hint_escolaridade">Escolaridades</string>
 </resources>

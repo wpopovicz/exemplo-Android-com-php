@@ -16,6 +16,21 @@
 CREATE DATABASE IF NOT EXISTS `testetecnospeed` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `testetecnospeed`;
 
+-- Exportação de dados foi desmarcado.
+-- Copiando estrutura para tabela testetecnospeed.vaga
+CREATE TABLE IF NOT EXISTS `vaga` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(100) NOT NULL,
+  `setor` varchar(250) DEFAULT NULL,
+  `cargo` varchar(250) DEFAULT NULL,
+  `atividade` text NOT NULL,
+  `requisito` text,
+  `escolaridade` varchar(100) DEFAULT NULL,
+  `status_registro` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `FK_vaga_categoria` (`titulo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 -- Copiando estrutura para tabela testetecnospeed.candidato
 CREATE TABLE IF NOT EXISTS `candidato` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -32,31 +47,6 @@ CREATE TABLE IF NOT EXISTS `candidato` (
   PRIMARY KEY (`id`),
   KEY `FK__vaga` (`id_vaga`),
   CONSTRAINT `FK__vaga` FOREIGN KEY (`id_vaga`) REFERENCES `vaga` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- Exportação de dados foi desmarcado.
--- Copiando estrutura para tabela testetecnospeed.categoria
-CREATE TABLE IF NOT EXISTS `categoria` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `titulo` varchar(100) NOT NULL,
-  `status_registro` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- Exportação de dados foi desmarcado.
--- Copiando estrutura para tabela testetecnospeed.vaga
-CREATE TABLE IF NOT EXISTS `vaga` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_categoria` int(11) NOT NULL,
-  `setor` varchar(250) DEFAULT NULL,
-  `cargo` varchar(250) DEFAULT NULL,
-  `atividades` text NOT NULL,
-  `requisitos` text,
-  `escolaridade` varchar(100) DEFAULT NULL,
-  `status_registro` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`),
-  KEY `FK_vaga_categoria` (`id_categoria`),
-  CONSTRAINT `FK_vaga_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Exportação de dados foi desmarcado.
