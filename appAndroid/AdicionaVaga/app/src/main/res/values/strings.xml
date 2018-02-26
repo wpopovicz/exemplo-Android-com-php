@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Teste TecnoSpeed</string>
+    <string name="cadastrar_vaga">Cadastrar Vaga</string>
+    <string name="listar_candidato">Listar Candidato</string>
+</resources>
