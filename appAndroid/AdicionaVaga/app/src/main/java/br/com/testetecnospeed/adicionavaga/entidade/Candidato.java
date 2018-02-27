@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class Candidato implements Serializable {
 
     private int id;
-    private int id_vaga;
+    private int idVaga;
     private String nome;
     private String telefone;
     private String email;
@@ -31,12 +31,12 @@ public class Candidato implements Serializable {
         this.id = id;
     }
 
-    public int getId_vaga() {
-        return id_vaga;
+    public void setIdVaga(int idVaga) {
+        this.idVaga = idVaga;
     }
 
-    public void setId_vaga(int id_vaga) {
-        this.id_vaga = id_vaga;
+    public int getIdVaga() {
+        return idVaga;
     }
 
     public String getNome() {

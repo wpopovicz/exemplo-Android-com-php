@@ -18,7 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegistraVaga"></activity>
+        <activity android:name=".RegistraVaga" />
+        <activity android:name=".ListarVagaActivity" />
+        <activity android:name=".ListarCandidatoActivity"></activity>
     </application>
 
 </manifest>

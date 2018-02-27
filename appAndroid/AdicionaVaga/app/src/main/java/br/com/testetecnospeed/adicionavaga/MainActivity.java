@@ -35,5 +35,15 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        listarVagaButton.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ListarVagaActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
     }
 }
