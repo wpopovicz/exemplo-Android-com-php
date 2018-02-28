@@ -110,4 +110,9 @@ public class Candidato implements Serializable {
     public void setStatus_registro(boolean status_registro) {
         this.status_registro = status_registro;
     }
+
+    @Override
+    public String toString() {
+        return "Candidato " +nome ;
+    }
 }

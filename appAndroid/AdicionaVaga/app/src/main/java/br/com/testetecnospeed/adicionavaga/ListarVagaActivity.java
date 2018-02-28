@@ -42,7 +42,6 @@ public class ListarVagaActivity extends AppCompatActivity implements AdapterView
         setContentView(R.layout.activity_listar_vaga);
 
         initComponents();
-
         adicionaAdpter();
 
         listavagas.setOnItemClickListener(this);
@@ -65,9 +64,9 @@ public class ListarVagaActivity extends AppCompatActivity implements AdapterView
                             JSONObject obj = new JSONObject(response);
                             JSONArray vagas = obj.getJSONArray("vaga");
                             for(int i = 0;i < vagas.length(); i++){
-                                Vaga vaga = new Vaga();
                                 JSONObject va = vagas.getJSONObject(i);
-                                if(va.length() > 0  && va.getBoolean("error")) {
+                                if(va.length() > 0  && !va.getBoolean("error")) {
+                                    Vaga vaga = new Vaga();
                                     vaga.setId(Integer.parseInt(va.getString("id")));
                                     vaga.setTitulo(va.getString("titulo"));
                                     vaga.setSetor(va.getString("setor"));
@@ -75,11 +74,10 @@ public class ListarVagaActivity extends AppCompatActivity implements AdapterView
                                     vaga.setAtividade(va.getString("atividade"));
                                     vaga.setRequisito(va.getString("requisito"));
                                     vaga.setEscolaridade(va.getString("escolaridade"));
-                                    vaga.setCont(Integer.parseInt(va.getString("cont")));
+                                    listaVags.add(vaga);
                                 }
-                                listaVags.add(vaga);
-                            }
 
+                            }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -124,7 +122,7 @@ public class ListarVagaActivity extends AppCompatActivity implements AdapterView
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Vaga vaga = adpVagas.getItem(position);
-        Intent intent = new Intent(ListarVagaActivity.this, ListarVagaActivity.class);
+        Intent intent = new Intent(ListarVagaActivity.this, ListarCandidatoActivity.class);
         intent.putExtra("VAGA", vaga);
         startActivityForResult(intent, 0);
     }
@@ -145,6 +143,7 @@ public class ListarVagaActivity extends AppCompatActivity implements AdapterView
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
+            arrayAdapter = adpVagas;
             arrayAdapter.getFilter().filter(s);
         }
 
@@ -152,5 +151,12 @@ public class ListarVagaActivity extends AppCompatActivity implements AdapterView
         public void afterTextChanged(Editable s) {
 
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(ListarVagaActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

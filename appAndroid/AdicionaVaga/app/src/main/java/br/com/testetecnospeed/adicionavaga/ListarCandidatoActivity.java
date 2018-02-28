@@ -71,21 +71,23 @@ public class ListarCandidatoActivity extends AppCompatActivity implements Adapte
                         try {
                             JSONObject obj = new JSONObject(response);
                             JSONArray vagas = obj.getJSONArray("candidato");
+                            System.out.println(vagas.toString());
                             for(int i = 0;i < vagas.length(); i++){
-                                Candidato candi = new Candidato();
                                 JSONObject can = vagas.getJSONObject(i);
-                                if(can.length() > 0  && can.getBoolean("error")) {
+                                if(!can.getBoolean("error")) {
+                                    Candidato candi = new Candidato();
                                     candi.setId(Integer.parseInt(can.getString("id")));
                                     candi.setIdVaga(Integer.parseInt(can.getString("id_vaga")));
                                     candi.setNome(can.getString("nome"));
                                     candi.setEmail(can.getString("email"));
-                                    candi.setEndereco(can.getString("endereço"));
-                                    candi.setExperienciaProfissional(can.getString("experiencia"));
-                                    candi.setFormacaoAcademica(can.getString("formacao"));
-                                    candi.setInformacaoAdicional(can.getString("informacao"));
+                                    candi.setEndereco(can.getString("endereco"));
+                                    candi.setExperienciaProfissional(can.getString("experiencia_profissional"));
+                                    candi.setFormacaoAcademica(can.getString("formacao_academica"));
+                                    candi.setInformacaoAdicional(can.getString("informacao_adicional"));
                                     candi.setTelefone(can.getString("telefone"));
+                                    listaCands.add(candi);
                                 }
-                                listaCands.add(candi);
+
                             }
 
 
@@ -144,7 +146,7 @@ public class ListarCandidatoActivity extends AppCompatActivity implements Adapte
         private ArrayAdapter<Candidato> arrayAdapter;
 
         private FiltraDados(ArrayAdapter<Candidato> arrayAdapter){
-
+            arrayAdapter = adpCandidatos;
             this.arrayAdapter = arrayAdapter;
         }
 
@@ -162,5 +164,12 @@ public class ListarCandidatoActivity extends AppCompatActivity implements Adapte
         public void afterTextChanged(Editable s) {
 
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(ListarCandidatoActivity.this, ListarVagaActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

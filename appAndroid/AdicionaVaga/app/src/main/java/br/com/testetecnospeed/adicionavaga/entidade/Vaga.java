@@ -16,7 +16,6 @@ public class Vaga implements Serializable {
     private String requisito;
     private String escolaridade;
     private boolean statusRegistro;
-    private int cont;
 
     public Vaga() {
     }
@@ -85,20 +84,8 @@ public class Vaga implements Serializable {
         this.statusRegistro = statusRegistro;
     }
 
-    public int getCont() {
-        return cont;
-    }
-
-    public void setCont(int cont) {
-        this.cont = cont;
-    }
-
     @Override
     public String toString() {
-        if(cont > 1) {
-            return titulo + " com " + cont + " inscritos";
-        }else{
-            return titulo + " com " + cont + " inscrito";
-        }
+        return "Vaga de " + titulo;
     }
 }
